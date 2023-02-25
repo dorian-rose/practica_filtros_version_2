@@ -10,6 +10,7 @@ const searchResultDiv = document.querySelector("#search-result-div");
 const filteredTrips = document.querySelector(".filtered-trips");
 const primaryTrip = document.querySelector(".primary-trip");
 const secondaryTrips = document.querySelector(".secondary-trips");
+
 //arrays for card content
 const travelImages = [
   {
@@ -92,11 +93,19 @@ document.addEventListener("click", ({ target }) => {
     filter(id);
   }
 });
-
+filteredTrips.addEventListener("click", ({ target }) => {
+  if (target.matches(".card")) {
+    makePrimaryCard(target);
+  }
+});
 //====FUNCTIONS=====
 
 //filter images
 const filter = (id) => {
+  viajes.innerHTML = "";
+  primaryTrip.innerHTML = "";
+  secondaryTrips.innerHTML = "";
+  searchResultDiv.innerHTML = "";
   let filteredImages = [];
   if (id == "todos") {
     makeCard(travelImages);
@@ -113,10 +122,6 @@ const filter = (id) => {
 };
 
 const filteredResults = (imageArray, id) => {
-  viajes.innerHTML = "";
-  primaryTrip.innerHTML = "";
-  secondaryTrips.innerHTML = "";
-  searchResultDiv.innerHTML = "";
   if (imageArray.length > 0) {
     let searchResult = document.createElement("P");
     searchResult.innerHTML = `Su busqueda ha encontrado <strong>${imageArray.length}</strong> imagenes de <strong>${id}</strong>`;
@@ -130,33 +135,25 @@ const filteredResults = (imageArray, id) => {
 };
 const makeFilteredCards = (imageArray) => {
   imageArray.forEach((item, i) => {
-    if (i > 0) {
-      //create card container and add a class to it
-      const secondaryImg = document.createElement("IMG");
-      //secondaryImg.classList.toggle("active");
-      secondaryImg.alt = item.text;
-      secondaryImg.src = `viajes/${item.url}`;
-      secondaryImg.title = item.text;
-      secondaryImg.addEventListener("click", (ev) => shuffleCards(ev));
-      //store (attache) card container to fragment
-      fragment.append(secondaryImg);
-    } else {
-      const primaryImg = document.createElement("IMG");
-      primaryImg.alt = item.text;
-      primaryImg.src = `viajes/${item.url}`;
-      primaryImg.title = item.text;
-      primaryTrip.append(primaryImg);
+    const secondaryImg = document.createElement("IMG");
+    secondaryImg.alt = item.text;
+    secondaryImg.src = `viajes/${item.url}`;
+    secondaryImg.title = item.text;
+    secondaryImg.classList.add("card");
+    fragment.append(secondaryImg);
+    if (i == 0) {
+      makePrimaryCard(secondaryImg);
     }
   });
   secondaryTrips.append(fragment);
 };
 
-const shuffleCards = (ev) => {
+const makePrimaryCard = (target) => {
   primaryTrip.innerHTML = "";
   const primaryImg = document.createElement("IMG");
-  primaryImg.alt = ev.target.alt;
-  primaryImg.src = ev.target.src;
-  primaryImg.title = ev.target.title;
+  primaryImg.alt = target.alt;
+  primaryImg.src = target.src;
+  primaryImg.title = target.title;
   primaryTrip.append(primaryImg);
 };
 
