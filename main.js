@@ -18,71 +18,66 @@ const travelImages = [
   {
     url: "viajes-1.jpg",
     text: "hammock on the beach",
-    heading: "Trip 1",
-    para: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ",
     relatedWords: ["mar", "agua", "cielo"],
   },
   {
     url: "viajes-2.jpg",
     text: "beach huts",
-    heading: "Trip 2",
-    para: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. ",
-    relatedWords: ["mar", "agua", "cielo", "nubes"],
+    relatedWords: ["mar", "agua", "cielo", "edificios", "nubes"],
   },
   {
     url: "viajes-3.jpg",
     text: "signs",
     heading: "Trip 3",
-    para: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
     relatedWords: ["nubes", "cielo"],
   },
   {
     url: "viajes-4.jpg",
     text: "Seville",
-    heading: "Trip 4",
-    para: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? ",
-    relatedWords: ["seville", "agua", "cielo", "edificios", "ciudad", "puente"],
-  },
-  {
-    url: "viajes-5.jpg",
-    text: "bridge in Seville",
-    heading: "Trip 5",
-    para: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
     relatedWords: [
       "seville",
       "agua",
       "cielo",
       "edificios",
       "ciudad",
-      "puente",
-      "farola",
+      "puentes",
+    ],
+  },
+  {
+    url: "viajes-5.jpg",
+    text: "bridge in Seville",
+    relatedWords: [
+      "seville",
+      "agua",
+      "cielo",
+      "edificios",
+      "ciudad",
+      "puentes",
+      "farolas",
     ],
   },
   {
     url: "viajes-6.jpg",
     text: "seaside road",
     heading: "Trip 6",
-    para: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores. ",
-    relatedWords: ["mar", "agua", "cielo", "puente", "farola", "nubes"],
+    relatedWords: ["mar", "agua", "cielo", "puentes", "farolas", "nubes"],
   },
   {
     url: "viajes-7.jpg",
     text: "Granada",
-    heading: "Trip 7",
-    para: "Et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     relatedWords: ["cielo", "edificios", "ciudad"],
   },
 ];
 
 //array related words
 const relatedWords = [
-  "farola",
+  "farolas",
   "nubes",
   "mar",
   "agua",
   "edificios",
   "ciudad",
-  "puente",
+  "puentes",
   "seville",
   "kangaroo",
   "todos",
@@ -128,7 +123,7 @@ const filter = (id) => {
 const filteredResults = (id) => {
   if (filteredImages.length > 0) {
     const searchResult = document.createElement("P");
-    searchResult.innerHTML = `Aqui un imagen resultado de su busqueda de <strong>${id}</strong>`;
+    searchResult.innerHTML = `Aqui un imagen de <strong>${id}</strong>`;
     searchResultDiv.append(searchResult);
     const relatedContent = document.createElement("P");
     relatedContent.innerHTML = `Resultados parecidos: <strong>${

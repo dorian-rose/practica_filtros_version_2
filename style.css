@@ -68,16 +68,16 @@ img {
 
 #search-result-div {
   margin: 20px 0;
-}
-#search-result-div strong {
-  text-transform: capitalize;
+  text-align: center;
 }
 
 /* Segundo parrafo de resultado de busqueda/ related content */
 
 #related-content-div {
-  margin: 20px 0;
+  margin: 50px 0 20px;
+  text-align: center;
 }
+
 /* related content photos/smaller photos */
 .secondary-trips img {
   width: 60%;
@@ -113,6 +113,14 @@ footer a {
   .num-col {
     grid-template-columns: 1fr 1fr;
   }
+
+  #search-result-div {
+    margin: 20px 0;
+    text-align: start;
+  }
+  #related-content-div {
+    text-align: start;
+  }
   .secondary-trips img {
     width: 100%;
   }
@@ -134,7 +142,8 @@ footer a {
 ===============================*/
 @media screen and (min-width: 1200px) {
   main {
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 50px;
   }
 }
